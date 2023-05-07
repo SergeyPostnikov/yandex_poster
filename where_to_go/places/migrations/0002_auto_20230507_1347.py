@@ -3,6 +3,8 @@
 from django.db import migrations
 import json
 import codecs
+import requests
+from django.core.files.base import ContentFile
 
 
 def load_data(apps, schema_editor):
@@ -20,8 +22,11 @@ def load_data(apps, schema_editor):
             lat=item['coordinates']['lat']
         )
 
-        for img in item['imgs']:
-            Image.objects.create(img=img, place=place)
+        for img_url in item['imgs']:
+            response = requests.get(img_url)
+            img_name = img_url.split('/')[-1]
+            image = Image(place=place)
+            image.img.save(img_name, ContentFile(response.content), save=True)
 
 
 class Migration(migrations.Migration):
