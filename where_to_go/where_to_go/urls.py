@@ -20,11 +20,13 @@ from where_to_go import views
 from django.conf import settings
 from django.conf.urls.static import static
 import debug_toolbar
+import tinymce
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.index, name='index'),
     path('places/<int:pk>/', views.get_place),
+    path('tinymce/', include('tinymce.urls')),
 ] 
 
 if settings.DEBUG:

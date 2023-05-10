@@ -1,4 +1,5 @@
 from django.db import models
+from tinymce.models import HTMLField
 
 
 class Image(models.Model):
@@ -23,7 +24,7 @@ class Place(models.Model):
         blank=True, 
         null=True
     )
-    description_long = models.TextField()
+    description_long = HTMLField(blank=True, null=True)
     lon = models.DecimalField(
         null=True,
         max_digits=16,
