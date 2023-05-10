@@ -8,7 +8,10 @@ class Image(models.Model):
             related_name='images', 
             on_delete=models.CASCADE
         )
-    order_num = models.IntegerField(blank=True, null=True)
+    order_num = models.IntegerField(blank=True, null=True, default=1)
+
+    class Meta:
+        ordering = ['order_num']
 
     def __str__(self):
         return f'{self.order_num}-{self.place.__str__()}'
