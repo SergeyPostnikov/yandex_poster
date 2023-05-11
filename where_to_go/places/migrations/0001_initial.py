@@ -19,8 +19,8 @@ class Migration(migrations.Migration):
                 ('title', models.CharField(max_length=40)),
                 ('description_short', models.TextField(blank=True, null=True)),
                 ('description_long', models.TextField()),
-                ('lon', models.DecimalField(decimal_places=14, max_digits=16, null=True, verbose_name='Longitude')),
-                ('lat', models.DecimalField(decimal_places=14, max_digits=16, null=True, verbose_name='Latitude')),
+                ('lon', models.FloatField(null=True, verbose_name='Longitude')),
+                ('lat', models.FloatField(null=True, verbose_name='Latitude')),
             ],
         ),
         migrations.CreateModel(

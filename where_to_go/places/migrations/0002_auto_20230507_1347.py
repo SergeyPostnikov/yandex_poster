@@ -18,8 +18,8 @@ def load_data(apps, schema_editor):
             title=item['title'],
             description_short=item['description_short'],
             description_long=item['description_long'],
-            lon=item['coordinates']['lng'],
-            lat=item['coordinates']['lat']
+            lon=float(item['coordinates']['lng']),
+            lat=float(item['coordinates']['lat'])
         )
 
         for img_url in item['imgs']:

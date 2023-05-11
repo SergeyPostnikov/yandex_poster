@@ -25,16 +25,12 @@ class Place(models.Model):
         null=True
     )
     description_long = HTMLField(blank=True, null=True)
-    lon = models.DecimalField(
+    lon = models.FloatField(
         null=True,
-        max_digits=16,
-        decimal_places=14,
         verbose_name='Longitude'
         )
-    lat = models.DecimalField(
+    lat = models.FloatField(
         null=True,
-        max_digits=16,
-        decimal_places=14,
         verbose_name='Latitude'
         )
 
