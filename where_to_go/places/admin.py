@@ -19,5 +19,5 @@ class ImageAdmin(admin.ModelAdmin):
 
 
 @admin.register(Place)
-class PlaceAdmin( SortableAdminBase, admin.ModelAdmin):
+class PlaceAdmin(SortableAdminBase, admin.ModelAdmin):
     inlines = [ImageInline]
