@@ -5,6 +5,7 @@ from django.core.management.base import BaseCommand
 
 from places.models import Place, Image
 from django.core.files.base import ContentFile
+from tqdm import tqdm
 
 
 class Command(BaseCommand):
@@ -23,11 +24,11 @@ class Command(BaseCommand):
             title=item['title'],
             description_short=item['description_short'],
             description_long=item['description_long'],
-            lon=item['coordinates']['lng'],
-            lat=item['coordinates']['lat']
+            lon=float(item['coordinates']['lng']),
+            lat=float(item['coordinates']['lat'])
         )
 
-        for img_url in item['imgs']:
+        for img_url in tqdm(item['imgs'], desc='Loading place'):
             response = requests.get(img_url)
             img_name = img_url.split('/')[-1]
             image = Image(place=place)
