@@ -41,7 +41,7 @@ def handle(apps, schema_editor):
         response.raise_for_status()
         item = json.loads(response.text)
 
-        place = Place.objects.create(
+        place, _ = Place.objects.update_or_create(
             title=item['title'],
             description_short=item['description_short'],
             description_long=item['description_long'],
@@ -61,7 +61,7 @@ def handle(apps, schema_editor):
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('places', '0003_auto_20230512_1712'),
+        ('places', '0002_auto_20230507_1347'),
     ]
 
     operations = [
