@@ -3,8 +3,9 @@ import requests
 
 from django.core.management.base import BaseCommand
 
-from places.models import Place, Image
 from django.core.files.base import ContentFile
+from places.models import Image
+from places.models import Place
 from tqdm import tqdm
 
 
@@ -13,6 +14,10 @@ class Command(BaseCommand):
 
     def add_arguments(self, parser):
         parser.add_argument('json_url', type=str, help='URL of JSON file')
+
+    def print_success_message(self, place):
+        msg = self.style.SUCCESS(f'Successfully loaded place "{place.title}"')
+        self.stdout.write(msg)
 
     def handle(self, *args, **options):
         json_url = options['json_url']
@@ -33,5 +38,4 @@ class Command(BaseCommand):
             img_name = img_url.split('/')[-1]
             image = Image(place=place)
             image.img.save(img_name, ContentFile(response.content), save=True)
-
-        self.stdout.write(self.style.SUCCESS(f'Successfully loaded place "{place.title}"'))
+        self.print_success_message(place)
