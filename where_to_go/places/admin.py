@@ -1,7 +1,9 @@
+from adminsortable2.admin import SortableAdminBase
+from adminsortable2.admin import SortableStackedInline
 from django.contrib import admin
-from places.models import Image, Place
 from django.utils.html import format_html
-from adminsortable2.admin import SortableStackedInline, SortableAdminBase
+from places.models import Image
+from places.models import Place
 
 
 class ImageInline(SortableStackedInline, admin.TabularInline):
@@ -10,7 +12,9 @@ class ImageInline(SortableStackedInline, admin.TabularInline):
     fields = ('img', 'order_num', 'place_preview')
 
     def place_preview(self, obj):
-        return format_html(f"<img src='{obj.img.url}' max-height='200' width='200' />")
+        return format_html(
+            f"<img src='{obj.img.url}' max-height='200' width='200' />"
+        )
 
 
 @admin.register(Image)
