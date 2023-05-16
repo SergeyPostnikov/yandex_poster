@@ -7,7 +7,8 @@ A website [Точки притяжения](http://taiga.pythonanywhere.com/) ab
 ## Launch
 
 - Download the code
-- Install dependencies using 
+
+- Install dependencies 
 
 ```
 pip install -r requirements.txt
@@ -19,7 +20,7 @@ pip install -r requirements.txt
 python3 manage.py migrate
 ```
 
-- Start the server with 
+- Start the server:
 
 ```
 python3 manage.py runserver
@@ -38,12 +39,12 @@ There are several variables available:
 
 if `DEBUG`  is False, then you have to provide your own DBMS with following variables required:  
 
-`DATABASE_ENGINE`   - mysql, postgres etc
-`DATABASE_NAME`     - database name
-`DATABASE_USER`     - user
-`DATABASE_PASSWORD` - password
-`DATABASE_HOST`     - host
-`DATABASE_PORT`     - port
+`DATABASE_ENGINE`   - mysql, postgres etc  
+`DATABASE_NAME`     - database name  
+`DATABASE_USER`     - user  
+`DATABASE_PASSWORD` - password  
+`DATABASE_HOST`     - host  
+`DATABASE_PORT`     - port  
 
 ## Adding places
 
