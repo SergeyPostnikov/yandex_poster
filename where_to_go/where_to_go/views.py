@@ -27,21 +27,20 @@ def get_place(request, pk) -> JsonResponse:
 
 def serialize_places(places):
     geojson = {
-      "type": "FeatureCollection",
-      "features": [],
+        "type": "FeatureCollection",
+        "features": [],
     }
     for place in places:
         feature = {
-          "type": "Feature",
-          "geometry": {
-            "type": "Point",
-            "coordinates": [place.lon, place.lat]
-          },
-          "properties": {
-            "title": place.title,
-            
-            "detailsUrl": reverse(get_place, kwargs={'pk': place.pk})
-          },
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [place.lon, place.lat]
+            },
+            "properties": {
+                "title": place.title,
+                "detailsUrl": reverse(get_place, kwargs={'pk': place.pk})
+            },
         }
         geojson['features'].append(feature)
     return geojson
