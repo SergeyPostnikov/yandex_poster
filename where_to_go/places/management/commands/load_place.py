@@ -25,7 +25,7 @@ class Command(BaseCommand):
         response.raise_for_status()
         item = json.loads(response.text)
 
-        place = Place.objects.create(
+        place, _ = Place.objects.get_or_create(
             title=item['title'],
             description_short=item['description_short'],
             description_long=item['description_long'],

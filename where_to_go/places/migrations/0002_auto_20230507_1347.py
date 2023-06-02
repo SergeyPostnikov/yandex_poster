@@ -14,7 +14,7 @@ def load_data(apps, schema_editor):
         with codecs.open(file, 'r', encoding='utf-8') as f:
             item = json.load(f)
 
-        place = Place.objects.create(
+        place, _ = Place.objects.get_or_create(
             title=item['title'],
             description_short=item['description_short'],
             description_long=item['description_long'],
