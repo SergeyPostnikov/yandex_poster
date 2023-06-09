@@ -15,7 +15,7 @@ class Image(models.Model):
         ordering = ['order_num']
 
     def __str__(self):
-        return f'{self.order_num}-{self.place.__str__()}'
+        return f'{self.order_num}-{self.place}'
 
 
 class Place(models.Model):
