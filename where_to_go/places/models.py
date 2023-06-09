@@ -19,12 +19,12 @@ class Image(models.Model):
 
 
 class Place(models.Model):
-    title = models.CharField(max_length=40, null=False)
+    title = models.CharField(max_length=40)
     description_short = models.TextField(
         blank=True,
         null=False
     )
-    description_long = HTMLField(blank=True, null=False)
+    description_long = HTMLField(blank=True)
     lon = models.FloatField(
         null=True,
         verbose_name='Longitude'
