@@ -12,8 +12,8 @@ def get_place(request, pk) -> JsonResponse:
         data={
             "title": place.title,
             "imgs": [image.img.url for image in place.images.all()],
-            "description_short": place.description_short,
-            "description_long": place.description_long,
+            "short_description": place.short_description,
+            "long_description": place.long_description,
             "coordinates": {
                 "lat": place.lat,
                 "lng": place.lon

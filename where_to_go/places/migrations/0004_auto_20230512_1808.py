@@ -61,7 +61,7 @@ def handle(apps, schema_editor):
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('places', '0002_auto_20230507_1347'),
+        ('places', '0003_auto_20230512_1712'),
     ]
 
     operations = [
